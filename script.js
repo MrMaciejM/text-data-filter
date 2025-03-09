@@ -14,32 +14,25 @@ dataTextArea.addEventListener("input", (e) => {
 
   let optionsArray = [commaOpt, whitespaceOpt];
 
+  // Options object + data filtering functions
   const transformations = [
-    { option: remCommaOpt, filter: (text) => text.replace(/,/g, "") },
-    { option: whitespaceOpt, filter: (text) => text.replace(/\s,/g, "") },
+    {
+      option: remCommaOpt,
+      filter: (text) => text.replace(/,/g, ""),
+    },
+    {
+      option: whitespaceOpt,
+      filter: (text) => text.replace(/\s+/g, ""),
+    },
   ];
 
-  transformations.forEach(({ option, filter }) => {
-    if (option.checked) {
-      dataToFilter = filter(dataToFilter);
+  let resultData = dataToFilter;
+
+  optionsArray.forEach((option, index) => {
+    //console.log(dataToFilter);
+    if (option) {
+      resultData = transformations[index].filter(resultData);
+      output.innerText = resultData;
     }
   });
-
-  filteredTextArea.innerText = dataToFilter;
 });
-//   optionsArray.forEach((item) => {
-//     if (item) {
-//       switch (item) {
-//         case commaOpt:
-//           output.innerText = dataToFilter.replace(/,/g, "");
-//           break;
-//         case whitespaceOpt:
-//           output.innerText = dataToFilter.replace(/\s/g, "");
-//         default:
-//           break;
-//       }
-//     }
-//   });
-// });
-
-// console.log(dataTextArea);
