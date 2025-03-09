@@ -1,0 +1,66 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  margin: 1rem;
+}
+
+.controlsDiv {
+  display: flex;
+  margin: 1rem 0;
+}
+.optionsDiv {
+  display: flex;
+}
+.optionsDiv input {
+  margin-right: 1px;
+  margin-top: -1px;
+}
+.optionsDiv label {
+  margin-right: 12px;
+}
+
+main {
+  display: flex;
+  width: 100%;
+  column-gap: 1rem;
+}
+
+h1 {
+  text-align: center;
+  margin: 2rem 0;
+}
+h2 {
+  font-size: 0.7rem;
+  font-weight: 400;
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.column1,
+.column2 {
+  border: solid 1px black;
+  width: 100%;
+  height: 80vh;
+  /* margin: 1rem; */
+}
+.column1Title,
+.column2Title {
+  text-align: center;
+  margin: 1rem 0;
+}
+.textAreaDiv,
+.textAreaDiv2 {
+  display: flex;
+  margin: 1rem;
+}
+textarea {
+  width: 100%;
+  padding: 0.3rem;
+  height: 50vh;
+  font-size: 1rem;
+}

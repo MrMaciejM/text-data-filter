@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="./script.js" defer></script>
+    <title>Text Data Filtering Tool (TDF Tool)</title>
+  </head>
+  <body>
+    <header>
+      <h1>Text Data Filtering (TDF) tool</h1>
+      <h2>Created by Maciej Matulewicz</h2>
+    </header>
+    <div class="controlsDiv">
+      <div class="optionsDiv">
+        <!-- rem commas option -->
+        <input
+          type="checkbox"
+          id="remCommaOptId"
+          name="remCommaOptId"
+          value="comma"
+        /><br />
+        <label for="remCommaOptId">Remove commas</label>
+        <!-- rem whitespace option -->
+        <input
+          type="checkbox"
+          id="remWhitespaceOptId"
+          name="remWhitespaceOptId"
+          value="whitespace"
+        /><br />
+        <label for="remCommaOptId">Remove whitespace</label>
+      </div>
+    </div>
+    <main>
+      <!-- Column 1 - data input -->
+      <div class="column1">
+        <p class="column1Title">Insert data here</p>
+        <div class="textAreaDiv">
+          <textarea name="dataTextArea" id="dataTextArea"></textarea>
+        </div>
+      </div>
+      <!-- Column 2 - filtered output -->
+      <div class="column2">
+        <p class="column2Title">Filtered Output</p>
+        <div class="textAreaDiv2">
+          <textarea name="filteredTextArea" id="filteredTextArea"></textarea>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
