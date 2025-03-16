@@ -15,21 +15,62 @@
     <div class="controlsDiv">
       <div class="optionsDiv">
         <!-- rem commas option -->
-        <input
-          type="checkbox"
-          id="remCommaOptId"
-          name="remCommaOptId"
-          value="comma"
-        /><br />
-        <label for="remCommaOptId">Remove commas</label>
+        <div>
+          <input
+            type="checkbox"
+            id="remCommaOptId"
+            name="remCommaOptId"
+            value="comma"
+          />
+          <label for="remCommaOptId">Remove commas</label>
+        </div>
+
         <!-- rem whitespace option -->
-        <input
-          type="checkbox"
-          id="remWhitespaceOptId"
-          name="remWhitespaceOptId"
-          value="whitespace"
-        /><br />
-        <label for="remCommaOptId">Remove whitespace</label>
+        <div>
+          <input
+            type="checkbox"
+            id="remWhitespaceOptId"
+            name="remWhitespaceOptId"
+            value="whitespace"
+          />
+          <label for="remWhitespaceOptId">Remove whitespace</label>
+        </div>
+        <!-- remove double quotes -->
+        <div>
+          <input
+            type="checkbox"
+            id="remDblQuoteId"
+            name="remDblQuoteId"
+            value="remDblQuoteId"
+          />
+          <label for="remDblQuoteId">Remove double quote</label>
+        </div>
+        <!--  -->
+        <!-- remove single quotes -->
+        <div>
+          <input
+            type="checkbox"
+            id="remSinglQuoteId"
+            name="remSinglQuoteId"
+            value="remSinglQuoteId"
+          />
+          <label for="remSinglQuoteId">Remove single quote</label>
+        </div>
+        <!--  -->
+      </div>
+    </div>
+    <!-- second row of options -->
+    <div class="secondRowOptionsContainer">
+      <div>
+        <textarea
+          class="remSpecWords"
+          name="remSpecWords"
+          id="remSpecWords"
+          placeholder="Example: test1, test2, test3"
+        >
+big,brown,tall</textarea
+        >
+        <label for="remSpecWords">Remove specific word(s)</label>
       </div>
     </div>
     <main>
