@@ -6,10 +6,13 @@ let remWhitespaceOpt = document.getElementById("remWhitespaceOptId");
 let remDblQuoteIdOpt = document.getElementById("remDblQuoteId");
 let remSinglQuoteId = document.getElementById("remSinglQuoteId");
 let remSpecWordsOpt = document.getElementById("remSpecWords");
+let allLowerCaseId = document.getElementById("allLowerCaseId");
 
 dataTextArea.addEventListener("input", (e) => {
   let output = filteredTextArea;
   let dataToFilter = e.target.value;
+
+  //console.log(allLowerCaseId.checked);
 
   // options
   let commaOpt = remCommaOpt.checked;
@@ -17,6 +20,9 @@ dataTextArea.addEventListener("input", (e) => {
   let dblQuoteIdOpt = remDblQuoteIdOpt.checked;
   let singlQuoteId = remSinglQuoteId.checked;
   let remSpecWords = remSpecWordsOpt.value;
+  let allLowerCaseOpt = allLowerCaseId.checked;
+
+  //console.log(allLowerCaseOpt);
 
   let optionsArray = [
     commaOpt,
@@ -24,6 +30,7 @@ dataTextArea.addEventListener("input", (e) => {
     dblQuoteIdOpt,
     singlQuoteId,
     remSpecWords,
+    allLowerCaseOpt,
   ];
 
   // Options object + data filtering functions
@@ -44,6 +51,7 @@ dataTextArea.addEventListener("input", (e) => {
       option: singlQuoteId,
       filter: (text) => text.replace(/'+/g, ""),
     },
+    ,
     {
       option: remSpecWordsOpt,
       filter: (text) => {
@@ -59,6 +67,14 @@ dataTextArea.addEventListener("input", (e) => {
 
           return updatedText;
         }
+        return text;
+      },
+    },
+    {
+      option: allLowerCaseOpt,
+      filter: (text) => {
+        console.log("Running lowercase filter", text); // Debugging log
+        return text.toLowerCase();
       },
     },
   ];
@@ -66,7 +82,8 @@ dataTextArea.addEventListener("input", (e) => {
   let resultData = dataToFilter;
 
   optionsArray.forEach((option, index) => {
-    console.log(index);
+    //console.log(index);
+    //console.log(option);
 
     //console.log(dataToFilter);
     if (option) {

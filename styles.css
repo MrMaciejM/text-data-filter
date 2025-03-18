@@ -25,6 +25,10 @@ body {
 }
 
 .secondRowOptionsContainer {
+  display: flex;
+}
+
+.thirdRowOptionsContainer {
   margin: 1.4rem 0;
 }
 .remSpecWords {
@@ -43,7 +47,7 @@ h1 {
   margin: 2rem 0;
 }
 h2 {
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   font-weight: 400;
   text-align: center;
   margin: 2rem 0;
