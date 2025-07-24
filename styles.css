@@ -31,9 +31,10 @@ body {
 .thirdRowOptionsContainer {
   margin: 1.4rem 0;
 }
-.remSpecWords {
+.remSpecChars {
   height: 2rem;
   padding: 0.2rem;
+  margin-bottom: 1rem;
 }
 
 main {

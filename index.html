@@ -9,99 +9,145 @@
   </head>
   <body>
     <header>
-      <h1>Text Data Filtering (TDF) tool</h1>
+      <h1>Text Data Filtering tool</h1>
       <h2>Created by Maciej Matulewicz</h2>
     </header>
-    <div class="controlsDiv">
-      <div class="optionsDiv">
-        <!-- rem commas option -->
-        <div>
-          <input
-            type="checkbox"
-            id="remCommaOptId"
-            name="remCommaOptId"
-            value="comma"
-          />
-          <label for="remCommaOptId">Remove commas</label>
+    <div id="container">
+      <div class="controlsDiv">
+        <div class="optionsDiv">
+          <!-- rem commas option -->
+          <div>
+            <input
+              type="checkbox"
+              id="remCommaOptId"
+              name="remCommaOptId"
+              value="comma"
+            />
+            <label for="remCommaOptId">Remove commas</label>
+          </div>
+          <!-- rem full stop option -->
+          <div>
+            <input
+              type="checkbox"
+              id="remFullStopOptId"
+              name="remFullStopOptId"
+              value="full stop"
+            />
+            <label for="remFullStopOptId">Remove full stop</label>
+          </div>
+          <!-- rem whitespace option -->
+          <div>
+            <input
+              type="checkbox"
+              id="remWhitespaceOptId"
+              name="remWhitespaceOptId"
+              value="whitespace"
+            />
+            <label for="remWhitespaceOptId">Remove all whitespace</label>
+          </div>
+          <!-- remove double quotes -->
+          <div>
+            <input
+              type="checkbox"
+              id="remDblQuoteId"
+              name="remDblQuoteId"
+              value="remDblQuoteId"
+            />
+            <label for="remDblQuoteId">Remove double quote</label>
+          </div>
+          <!--  -->
+          <!-- remove single quotes -->
+          <div>
+            <input
+              type="checkbox"
+              id="remSinglQuoteId"
+              name="remSinglQuoteId"
+              value="remSinglQuoteId"
+            />
+            <label for="remSinglQuoteId">Remove single quote</label>
+          </div>
+          <!--  -->
         </div>
-
-        <!-- rem whitespace option -->
-        <div>
-          <input
-            type="checkbox"
-            id="remWhitespaceOptId"
-            name="remWhitespaceOptId"
-            value="whitespace"
-          />
-          <label for="remWhitespaceOptId">Remove whitespace</label>
-        </div>
-        <!-- remove double quotes -->
-        <div>
-          <input
-            type="checkbox"
-            id="remDblQuoteId"
-            name="remDblQuoteId"
-            value="remDblQuoteId"
-          />
-          <label for="remDblQuoteId">Remove double quote</label>
-        </div>
-        <!--  -->
-        <!-- remove single quotes -->
-        <div>
-          <input
-            type="checkbox"
-            id="remSinglQuoteId"
-            name="remSinglQuoteId"
-            value="remSinglQuoteId"
-          />
-          <label for="remSinglQuoteId">Remove single quote</label>
-        </div>
-        <!--  -->
       </div>
+      <!-- second row of options -->
+      <div class="secondRowOptionsContainer optionsDiv">
+        <div>
+          <input
+            id="allLowerCaseId"
+            name="allLowerCaseId"
+            value="allLowerCaseId"
+            type="checkbox"
+          />
+          <label for="allLowerCaseId">lowercase</label>
+        </div>
+        <div>
+          <input
+            id="allUpperCaseId"
+            name="allUpperCaseId"
+            value="allUpperCaseId"
+            type="checkbox"
+          />
+          <label for="allUpperCaseId">UPPERCASE</label>
+        </div>
+        <div>
+          <input
+            id="remNumbers"
+            name="remNumbers"
+            value="remNumbers"
+            type="checkbox"
+          />
+          <label for="remNumbers">Remove numbers</label>
+        </div>
+        <div>
+          <input
+            id="trimExtraSpace"
+            name="trimExtraSpace"
+            value="trimExtraSpace"
+            type="checkbox"
+          />
+          <label for="trimExtraSpace">Trim extra space</label>
+        </div>
+      </div>
+      <!-- third row of options -->
+      <div class="thirdRowOptionsContainer">
+        <div>
+          <label for="remSpecChars">Remove specific words or numbers</label>
+          <textarea
+            class="remSpecChars"
+            name="remSpecChars"
+            id="remSpecChars"
+            placeholder="Example: test1, test2, test3"
+          ></textarea>
+        </div>
+        <div>
+          <label for="remSplitChars"
+            >Remove specific characters or numbers
+            <strong>within</strong> text</label
+          >
+          <textarea
+            class="remSplitChars remSpecChars"
+            name="remSplitChars"
+            id="remSplitChars"
+            placeholder="Example: A, B, c, 1, 3, 15..."
+          ></textarea>
+        </div>
+      </div>
+      <main>
+        <!-- Column 1 - data input -->
+        <div class="column1">
+          <p class="column1Title">Insert data here</p>
+          <div class="textAreaDiv">
+            <textarea name="dataTextArea" id="dataTextArea"></textarea>
+          </div>
+        </div>
+        <!-- Column 2 - filtered output -->
+        <div class="column2">
+          <p class="column2Title">Filtered Output</p>
+          <div class="textAreaDiv2">
+            <textarea name="filteredTextArea" id="filteredTextArea"></textarea>
+          </div>
+        </div>
+      </main>
     </div>
-    <!-- second row of options -->
-    <div class="secondRowOptionsContainer optionsDiv">
-      <div>
-        <input
-          id="allLowerCaseId"
-          name="allLowerCaseId"
-          value="allLowerCaseId"
-          type="checkbox"
-        />
-        <label for="allLowerCaseId">lowercase</label>
-      </div>
-      <div>
-        <input id="allUpperCaseId" type="checkbox" />
-        <label for="allUpperCaseId">UPPERCASE</label>
-      </div>
-    </div>
-    <!-- third row of options -->
-    <div class="thirdRowOptionsContainer">
-      <div>
-        <textarea
-          class="remSpecWords"
-          name="remSpecWords"
-          id="remSpecWords"
-          placeholder="Example: test1, test2, test3"
-        ></textarea>
-        <label for="remSpecWords">Remove specific word(s)</label>
-      </div>
-    </div>
-    <main>
-      <!-- Column 1 - data input -->
-      <div class="column1">
-        <p class="column1Title">Insert data here</p>
-        <div class="textAreaDiv">
-          <textarea name="dataTextArea" id="dataTextArea"></textarea>
-        </div>
-      </div>
-      <!-- Column 2 - filtered output -->
-      <div class="column2">
-        <p class="column2Title">Filtered Output</p>
-        <div class="textAreaDiv2">
-          <textarea name="filteredTextArea" id="filteredTextArea"></textarea>
-        </div>
-      </div>
-    </main>
   </body>
 </html>

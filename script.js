@@ -1,94 +1,96 @@
 let dataTextArea = document.getElementById("dataTextArea");
 let filteredTextArea = document.getElementById("filteredTextArea");
+let container = document.getElementById("container");
 
 let remCommaOpt = document.getElementById("remCommaOptId");
+let remFullStopOptId = document.getElementById("remFullStopOptId");
 let remWhitespaceOpt = document.getElementById("remWhitespaceOptId");
 let remDblQuoteIdOpt = document.getElementById("remDblQuoteId");
 let remSinglQuoteId = document.getElementById("remSinglQuoteId");
-let remSpecWordsOpt = document.getElementById("remSpecWords");
 let allLowerCaseId = document.getElementById("allLowerCaseId");
+let allUpperCaseId = document.getElementById("allUpperCaseId");
+let remSpecCharsOpt = document.getElementById("remSpecChars");
+let remSplitCharsOpt = document.getElementById("remSplitChars");
+let remNumbersOpt = document.getElementById("remNumbers");
+let trimExtraSpaceopt = document.getElementById("trimExtraSpace");
 
-dataTextArea.addEventListener("input", (e) => {
-  let output = filteredTextArea;
-  let dataToFilter = e.target.value;
-
-  //console.log(allLowerCaseId.checked);
-
-  // options
-  let commaOpt = remCommaOpt.checked;
-  let whitespaceOpt = remWhitespaceOpt.checked;
-  let dblQuoteIdOpt = remDblQuoteIdOpt.checked;
-  let singlQuoteId = remSinglQuoteId.checked;
-  let remSpecWords = remSpecWordsOpt.value;
-  let allLowerCaseOpt = allLowerCaseId.checked;
-
-  //console.log(allLowerCaseOpt);
-
-  let optionsArray = [
-    commaOpt,
-    whitespaceOpt,
-    dblQuoteIdOpt,
-    singlQuoteId,
-    remSpecWords,
-    allLowerCaseOpt,
-  ];
-
-  // Options object + data filtering functions
-  const transformations = [
+container.addEventListener("input", () => {
+  let textData = dataTextArea.value;
+  let applyOptions = [
     {
-      option: remCommaOpt,
-      filter: (text) => text.replace(/,/g, ""),
+      option: remCommaOpt.checked,
+      text: (textData) => textData.replace(/,/g, ""), // one expression, hence why it returns itself
     },
     {
-      option: whitespaceOpt,
-      filter: (text) => text.replace(/\s+/g, ""),
+      option: remFullStopOptId.checked,
+      text: (textData) => textData.replace(/\./g, ""),
     },
     {
-      option: dblQuoteIdOpt,
-      filter: (text) => text.replace(/"+/g, ""),
+      option: remWhitespaceOpt.checked,
+      text: (textData) => textData.replace(/\s+/g, ""),
     },
     {
-      option: singlQuoteId,
-      filter: (text) => text.replace(/'+/g, ""),
+      option: remDblQuoteIdOpt.checked,
+      text: (textData) => textData.replace(/"/g, ""),
     },
-    ,
     {
-      option: remSpecWordsOpt,
-      filter: (text) => {
-        if (remSpecWordsOpt.value.length > 0) {
-          //prettier-ignore
-          let wordsToRemArray = remSpecWordsOpt.value.split(",").map(word => word.trim());
+      option: remSinglQuoteId.checked,
+      text: (textData) => textData.replace(/'/g, ""),
+    },
+    {
+      option: allLowerCaseId.checked,
+      text: (textData) => textData.toLowerCase(),
+    },
+    {
+      option: allUpperCaseId.checked,
+      text: (textData) => textData.toUpperCase(),
+    },
+    {
+      option: remSpecCharsOpt.value,
+      text: (textData) => {
+        //prettier-ignore
+        let wordsToRemArray = remSpecCharsOpt.value.split(",").map(textData => textData.trim());
 
-          //prettier-ignore
-          let regex = new RegExp("\\b(" + wordsToRemArray.join("|") + ")\\b", "gi"); // \\b is a boundary flag
+        //prettier-ignore
+        let valuesToRemove = new RegExp("\\b(" + wordsToRemArray.join("|") + ")\\b", "gi"); // \\b is a boundary flag
 
-          //prettier-ignore
-          let updatedText = text.replace(regex, '').replace(/\s{2,}/g, ' ').trim(); // s{2,} means 2 or more spaces
-
-          return updatedText;
-        }
-        return text;
+        //prettier-ignore
+        return textData.replace(valuesToRemove, '').replace(/\s{2,}/g, ' ').trim(); // s{2,} means 2 or more spaces
       },
     },
     {
-      option: allLowerCaseOpt,
-      filter: (text) => {
-        console.log("Running lowercase filter", text); // Debugging log
-        return text.toLowerCase();
+      option: remSplitCharsOpt.value,
+      text: (textData) => {
+        //prettier-ignore
+        let valuesToRemove = new RegExp(`[${remSplitCharsOpt.value.split("").join("")}]`, "g");
+        return textData.replace(valuesToRemove, "");
       },
+    },
+    {
+      option: remSplitCharsOpt.value,
+      text: (textData) => {
+        //prettier-ignore
+        let valuesToRemove = new RegExp(`[${remSplitCharsOpt.value.split("").join("")}]`, "g");
+        return textData.replace(valuesToRemove, "");
+      },
+    },
+    {
+      option: remNumbersOpt.checked,
+      //prettier-ignore
+      text: (textData) => textData.replace(/[0-9]/g, ""), //if code contains { } in this line, it will NOT return the value
+    },
+    {
+      option: trimExtraSpaceopt.checked,
+      //prettier-ignore
+      text: (textData) => textData.replace(/\s{2,}/g, " ").trim(),
     },
   ];
 
-  let resultData = dataToFilter;
-
-  optionsArray.forEach((option, index) => {
-    //console.log(index);
-    //console.log(option);
-
-    //console.log(dataToFilter);
-    if (option) {
-      resultData = transformations[index].filter(resultData);
-      output.innerText = resultData;
+  applyOptions.forEach((item) => {
+    if (item.option) {
+      textData = item.text(textData);
     }
   });
+
+  filteredTextArea.value = textData;
 });
