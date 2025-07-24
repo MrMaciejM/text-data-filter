@@ -1,0 +1,24 @@
+@media screen and (max-width: 1024px) {
+  .optionsDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    margin: 0 auto;
+  }
+  .secondRowOptionsContainer {
+    display: flex;
+    flex-direction: column;
+  }
+  .secondRowOptionsContainer div {
+    margin: 0 auto;
+  }
+  .secondRowControlsDiv div {
+    margin-right: 3.15rem;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+  }
+}
